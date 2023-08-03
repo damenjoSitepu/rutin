@@ -1,0 +1,19 @@
+{
+    "name": "damenjo/rutin",
+    "description": "Provide great PHP API Extension for DateTime",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Damenjo Sitepu",
+            "email": "damenstory@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Damenjo\\Rutin\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
