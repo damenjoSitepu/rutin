@@ -90,4 +90,32 @@ final class RutinDateTimeObjectService {
         }
         return $this->rawDateTime->format($format);
     }
+
+    /**
+     * Add One Day
+     *
+     * @return RutinDateTimeObjectService
+     */
+    public function addDay(): RutinDateTimeObjectService
+    {
+        $this->rawDateTime = $this->rawDateTime->modify("+1 day");
+        $this->extract();
+        return $this;
+    }
+
+    /**
+     * Add N Days
+     *
+     * @param integer $numberOfDays
+     * @return RutinDateTimeObjectService
+     */
+    public function addDays(int $numberOfDays): RutinDateTimeObjectService
+    {           
+        $numberOfDaysFormatted = "+{$numberOfDays}";
+        // If number of days argument less than zero, we know that (+) sign are not working anymore
+        if ($numberOfDays < 0) $numberOfDaysFormatted = "-{$numberOfDays}";
+        $this->rawDateTime = $this->rawDateTime->modify("{$numberOfDaysFormatted} day");
+        $this->extract();
+        return $this;
+    }
 }
