@@ -63,7 +63,7 @@ $rutinPlusTwoDay = Rutin::now()->addDays(2)->format("Y-m-d");
  * safety are important if you not sure that
  * value will be taken as number
  */     
-$rutinNull = Rutin::now()->addDays(null ?? 0)->format("Y-m-d);
+$rutinNull = Rutin::now()->addDays(null ?? 0)->format("Y-m-d");
 ```
 
 ---
