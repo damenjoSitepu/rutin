@@ -59,7 +59,7 @@ $rutinPlusTwoDay = Rutin::now()->addDays(2)->format("Y-m-d");
 $rutinNull = Rutin::now()->addDays(null ?? 0)->format("Y-m-d");
 ```
 > [!WARNING]
-> Null will cause an **error**, please take a **note** that null safety `??` are **important** if you not sure that value will be taken as `number`
+> `null` will cause an **error**, so please take a **note** that null safety `??` are **important** if you not sure that value will be taken as `number`
 
 ---
 
