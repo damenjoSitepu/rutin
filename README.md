@@ -5,7 +5,7 @@ You can install this package via:
 
 | Dependency Manager | Command |
 | --------------- | --------------- |
-| [Composer](https://getcomposer.org/)   | `composer require damenjo/rutin`   |
+| [Composer](https://getcomposer.org/)   | ```bash composer require damenjo/rutin ```  |
 
 ### Guidelines
 
