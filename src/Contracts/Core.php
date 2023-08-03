@@ -3,6 +3,7 @@
 namespace Damenjo\Rutin\Contracts;
 
 use Damenjo\Rutin\Main\RutinCore;
+use Damenjo\Rutin\Services\RutinDateTimeObjectService;
 
 interface Core {
     /**
@@ -17,15 +18,7 @@ interface Core {
      * Get now datetime 
      *
      * @param string $tZ
-     * @return RutinCore
+     * @return RutinDateTimeObjectService
      */
-    public static function now(string $tZ = "Asia/Jakarta"): RutinCore;
-
-    /**
-     * Format DateTime object as returned value
-     *
-     * @param string $format
-     * @return string
-     */
-    public static function format(string $format = "Y-m-d H:i:s"): string;
+    public static function now(string $tZ = "Asia/Jakarta"): RutinDateTimeObjectService;
 }
