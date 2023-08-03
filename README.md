@@ -38,10 +38,10 @@ $year = Rutin::now("Asia/Jakarta")->format("Y");
 
 We also have method that can help you to add or substract `days`, `month`, `year`, etc as many as you want. The list of utilities that you can use will be described below:
 
-| Method Name | Used For | Notes |
-| --------------- | --------------- | ------ |
-| `addDay()`   | Add one day from your specific **DateTime** | - |
-| `addDays(int $numberOfDays)` | Add **N** days from your specific **DateTime** | Please use null safety like `??` if you didn't sure that value was not a number or like `null` values |
+| Method Name | Used For |
+| --------------- | --------------- |
+| `addDay()`   | Add one day from your specific **DateTime** | 
+| `addDays(int $numberOfDays)` | Add **N** days from your specific **DateTime** |
 
 This is a few example how to use all the listed method above: 
 
@@ -57,6 +57,8 @@ $rutinPlusTwoDay = Rutin::now()->addDays(2)->format("Y-m-d");
 
 /**
  * 2023-08-03
+ * 
+ * IMPORTANT NOTE!
  * Null will cause an error, please take a note that null
  * safety are important if you not sure that
  * value will be taken as number
