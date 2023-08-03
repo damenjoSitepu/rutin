@@ -1,11 +1,11 @@
-## Rutin Provide Great PHP API Extension For DateTime Services
+## Rutin Provide Great PHP API Extension For DateTime Services :+1:
 ### Installation List
 
 You can install this package via:
 
 | Dependency Manager | Command |
 | --------------- | --------------- |
-| [Composer](https://getcomposer.org/)   | ```bash composer require damenjo/rutin ```  |
+| [Composer](https://getcomposer.org/)   | ```composer require damenjo/rutin```  |
 
 ### Guidelines
 
@@ -55,16 +55,11 @@ $rutinPlusOneDay = Rutin::now()->addDay()->format("Y-m-d");
 // 2023-08-05
 $rutinPlusTwoDay = Rutin::now()->addDays(2)->format("Y-m-d");
 
-/**
- * 2023-08-03
- * 
- * IMPORTANT NOTE!
- * Null will cause an error, please take a note that null
- * safety are important if you not sure that
- * value will be taken as number
- */     
+// 2023-08-03
 $rutinNull = Rutin::now()->addDays(null ?? 0)->format("Y-m-d");
 ```
+> [!WARNING]
+> Null will cause an error, please take a note that null safety are important if you not sure that value will be taken as number
 
 ---
 
