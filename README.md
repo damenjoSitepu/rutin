@@ -43,6 +43,7 @@ We also have method that can help you to add or substract `days`, `month`, `year
 | `addDay()`   | Add one day from your specific **DateTime** | 
 | `addDays(int $numberOfDays)` | Add **N** days from your specific **DateTime** |
 | `addDayIf(callable $prediction)` | Add one day from your specific **DateTime** with certain condition |
+| `addDaysIf(callable $prediction, int $numberOfDays)` | Add **N** days from your specific **DateTime** with certain condition |
 
 
 This is a few example how to use all the listed method above: 
