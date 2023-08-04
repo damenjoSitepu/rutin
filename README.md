@@ -66,7 +66,7 @@ $rutinNull = Rutin::now()->addDays(null ?? 0)->format("Y-m-d");
 Also, if you have scenario like to add your day by some conditions, you can use `addDayIf()` . 
 
 ```php
-$prediction = ;
+$prediction = true;
 $rutinPlusOneDayIf = Rutin::now()->addDayIf(fn() => $prediction)->format("Y-m-d");
 ```
 
