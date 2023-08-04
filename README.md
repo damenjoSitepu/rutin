@@ -42,6 +42,8 @@ We also have method that can help you to add or substract `days`, `month`, `year
 | --------------- | --------------- |
 | `addDay()`   | Add one day from your specific **DateTime** | 
 | `addDays(int $numberOfDays)` | Add **N** days from your specific **DateTime** |
+| `addDayIf(callable $prediction)` | Add one day from your specific **DateTime** with certain condition |
+
 
 This is a few example how to use all the listed method above: 
 
@@ -60,6 +62,13 @@ $rutinNull = Rutin::now()->addDays(null ?? 0)->format("Y-m-d");
 ```
 > [!WARNING]
 > `null` will cause an **error**, so please take a **note** that null safety `??` are **important** if you not sure that value will be taken as `number`
+
+Also, if you have scenario like to add your day by some conditions, you can use `addDayIf()` . 
+
+```php
+$prediction = ;
+$rutinPlusOneDayIf = Rutin::now()->addDayIf(fn() => $prediction)->format("Y-m-d");
+```
 
 ---
 
