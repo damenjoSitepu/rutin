@@ -128,7 +128,7 @@ final class RutinDateTimeObjectService {
      * @param integer $numberOfDays
      * @return RutinDateTimeObjectService
      */
-    public function addDays(int $numberOfDays): RutinDateTimeObjectService
+    public function addDays(int $numberOfDays = 0): RutinDateTimeObjectService
     {           
         $numberOfDaysFormatted = "+{$numberOfDays}";
         // If number of days argument less than zero, we know that (+) sign are not working anymore
@@ -145,7 +145,7 @@ final class RutinDateTimeObjectService {
      * @param integer $numberOfDays
      * @return RutinDateTimeObjectService
      */
-    public function addDaysIf(callable $prediction, int $numberOfDays): RutinDateTimeObjectService
+    public function addDaysIf(callable $prediction, int $numberOfDays = 0): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
         if (! is_bool($callbackResult)) {
