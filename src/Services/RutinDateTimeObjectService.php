@@ -106,6 +106,7 @@ final class RutinDateTimeObjectService {
     /**
      * Add Day With Condition
      *
+     * @param callable $prediction
      * @return RutinDateTimeObjectService
      */
     public function addDayIf(callable $prediction): RutinDateTimeObjectService
@@ -134,6 +135,29 @@ final class RutinDateTimeObjectService {
         if ($numberOfDays < 0) $numberOfDaysFormatted = "-{$numberOfDays}";
         $this->rawDateTime = $this->rawDateTime->modify("{$numberOfDaysFormatted} day");
         $this->extract();
+        return $this;
+    }
+
+    /**
+     * Add N Days With Condition
+     * 
+     * @param callable $prediction
+     * @param integer $numberOfDays
+     * @return RutinDateTimeObjectService
+     */
+    public function addDaysIf(callable $prediction, int $numberOfDays): RutinDateTimeObjectService
+    {
+        $callbackResult = $prediction();
+        if (! is_bool($callbackResult)) {
+            throw new RutinException("The callback prediction must return a boolean value!");
+        }
+        if ($callbackResult) {
+            $numberOfDaysFormatted = "+{$numberOfDays}";
+            // If number of days argument less than zero, we know that (+) sign are not working anymore
+            if ($numberOfDays < 0) $numberOfDaysFormatted = "-{$numberOfDays}";
+            $this->rawDateTime = $this->rawDateTime->modify("{$numberOfDaysFormatted} day");
+            $this->extract();
+        }
         return $this;
     }
 }
