@@ -104,6 +104,24 @@ final class RutinDateTimeObjectService {
     }
 
     /**
+     * Add Day With Condition
+     *
+     * @return RutinDateTimeObjectService
+     */
+    public function addDayIf(callable $prediction): RutinDateTimeObjectService
+    {
+        $callbackResult = $prediction();
+        if (! is_bool($callbackResult)) {
+            throw new RutinException("The callback prediction must return a boolean value!");
+        }
+        if ($callbackResult) {
+            $this->rawDateTime = $this->rawDateTime->modify("+1 day");
+            $this->extract();
+        }
+        return $this;
+    }
+
+    /**
      * Add N Days
      *
      * @param integer $numberOfDays
