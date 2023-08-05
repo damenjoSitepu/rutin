@@ -40,18 +40,20 @@ We also have method that can help you to add or substract `days`, `month`, `year
 
 | Method Name | Used For |
 | --------------- | --------------- |
-| `addDay()`   | Add one day from your specific **DateTime** | 
-| `addDays(int $numberOfDays)` | Add **N** days from your specific **DateTime** |
-| `addDayIf(callable $prediction)` | Add one day from your specific **DateTime** with certain condition |
-| `addDaysIf(callable $prediction, int $numberOfDays)` | Add **N** days from your specific **DateTime** with certain condition |
-| `addMonth()`   | Add one month from your specific **DateTime** | 
-| `addMonths(int $numberOfMonths)` | Add **N** months from your specific **DateTime** |
-| `addMonthIf(callable $prediction)` | Add one month from your specific **DateTime** with certain condition |
-| `addMonthsIf(callable $prediction, int $numberOfMonths)` | Add **N** months from your specific **DateTime** with certain condition |
-| `addYear()`   | Add one year from your specific **DateTime** | 
-| `addYears(int $numberOfYears)` | Add **N** years from your specific **DateTime** |
-| `addYearIf(callable $prediction)` | Add one year from your specific **DateTime** with certain condition |
-| `addYearsIf(callable $prediction, int $numberOfYears)` | Add **N** years from your specific **DateTime** with certain condition |
+| `addDay()`   | Add one day to your specific **DateTime** | 
+| `addDays(int $numberOfDays)` | Add **N** days to your specific **DateTime** |
+| `addDayIf(callable $prediction)` | Add one day to your specific **DateTime** with certain condition |
+| `addDaysIf(callable $prediction, int $numberOfDays)` | Add **N** days to your specific **DateTime** with certain condition |
+| `addMonth()`   | Add one month to your specific **DateTime** | 
+| `addMonths(int $numberOfMonths)` | Add **N** months to your specific **DateTime** |
+| `addMonthIf(callable $prediction)` | Add one month to your specific **DateTime** with certain condition |
+| `addMonthsIf(callable $prediction, int $numberOfMonths)` | Add **N** months to your specific **DateTime** with certain condition |
+| `addYear()`   | Add one year to your specific **DateTime** | 
+| `addYears(int $numberOfYears)` | Add **N** years to your specific **DateTime** |
+| `addYearIf(callable $prediction)` | Add one year to your specific **DateTime** with certain condition |
+| `addYearsIf(callable $prediction, int $numberOfYears)` | Add **N** years to your specific **DateTime** with certain condition |
+| `addTimestamp(int $numberOfTimestamp = 1)`   | Add defined number of timestamp to your specific **DateTime** | 
+| `addTimestampIf(callable $prediction, int $numberOfTimestamp = 1)` | Add defined number of timestamp to your specific **DateTime** with certain condition |
 
 > [!NOTE]
 > We also now have `add(string $dateElement, int $numberOfDateElement = 1)` to make your life easier. We'll describe the example below the existing code, so please take your time to see it ^_^
