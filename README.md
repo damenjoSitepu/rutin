@@ -82,7 +82,7 @@ try {
     // Invalid argument data type
     $rutinNull = Rutin::now()->addDays("")->format("Y-m-d");
 } catch (\Damenjo\Rutin\Exceptions\RutinException $e) {
-    // We recommend you too use this catch blocks too
+    // We recommend you to use this catch blocks too
     echo $e->ruinMessage();
 } catch (\TypeError $e) {
     // Do whatever you want inside this block
