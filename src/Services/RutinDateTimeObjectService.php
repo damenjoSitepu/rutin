@@ -19,7 +19,7 @@ final class RutinDateTimeObjectService {
      *
      * @var boolean
      */
-    private bool $isConditionPassed = false;
+    private bool $isWhileConditionPassed = false;
 
     /**
      * Define default format 
@@ -114,7 +114,7 @@ final class RutinDateTimeObjectService {
      */
     private function synchronized(string $modifiedDateElements): RutinDateTimeObjectService
     {
-        if ($this->isWhileCalled && ! $this->isConditionPassed) return $this; 
+        if ($this->isWhileCalled && ! $this->isWhileConditionPassed) return $this; 
         $this->rawDateTime = $this->rawDateTime->modify($modifiedDateElements);
         $this->extract();
         $this->isWhileCalled = false;
@@ -291,7 +291,7 @@ final class RutinDateTimeObjectService {
         $callbackResult = $prediction();
         ! is_bool($callbackResult) && RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         $this->isWhileCalled = true;
-        $callbackResult ? $this->isConditionPassed = true : $this->isConditionPassed = false;
+        $callbackResult ? $this->isWhileConditionPassed = true : $this->isWhileConditionPassed = false;
         return $this;
     }  
 }
