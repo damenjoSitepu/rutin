@@ -11,6 +11,14 @@ class RutinUtilsService {
      */
     public static function modifyDateTimeWithMinusOrPlusSign(int $numberOfDateElement = 0, string $dateElement = "day"): string 
     {
+        /**
+         * If date element was timestamp, we will return 
+         * string with both of two parameter 
+         * and separated by space
+         */
+        if ($dateElement === "timestamp") {
+            return "{$dateElement} {$numberOfDateElement}";
+        }
         return ($numberOfDateElement < 0 ? "-" : "+") . "{$numberOfDateElement} {$dateElement}";
     }    
 }
