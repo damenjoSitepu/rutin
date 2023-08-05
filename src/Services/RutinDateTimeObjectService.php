@@ -93,15 +93,25 @@ final class RutinDateTimeObjectService {
     }
 
     /**
+     * Synchronized the datetime data after they've been modified
+     *
+     * @return RutinDateTimeObjectService
+     */
+    private function synchronized(string $modifiedDateElements): RutinDateTimeObjectService
+    {
+        $this->rawDateTime = $this->rawDateTime->modify($modifiedDateElements);
+        $this->extract();
+        return $this;
+    }
+
+    /**
      * Add One Day
      *
      * @return RutinDateTimeObjectService
      */
     public function addDay(): RutinDateTimeObjectService
     {
-        $this->rawDateTime = $this->rawDateTime->modify("+1 day");
-        $this->extract();
-        return $this;
+        return $this->synchronized("+1 day");
     }
 
     /**
@@ -169,9 +179,7 @@ final class RutinDateTimeObjectService {
      */
     public function addMonth(): RutinDateTimeObjectService
     {
-        $this->rawDateTime = $this->rawDateTime->modify("+1 month");
-        $this->extract();
-        return $this;
+        return $this->synchronized("+1 month");
     }
 
     /**
@@ -239,9 +247,7 @@ final class RutinDateTimeObjectService {
      */
     public function addYear(): RutinDateTimeObjectService
     {
-        $this->rawDateTime = $this->rawDateTime->modify("+1 year");
-        $this->extract();
-        return $this;
+        return $this->synchronized("+1 year");
     }
 
     /**
