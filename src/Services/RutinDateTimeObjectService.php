@@ -157,14 +157,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) {
             RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         }
-        if ($callbackResult) {
-            $numberOfDaysFormatted = "+{$numberOfDays}";
-            // If number of days argument less than zero, we know that (+) sign are not working anymore
-            if ($numberOfDays < 0) $numberOfDaysFormatted = "-{$numberOfDays}";
-            $this->rawDateTime = $this->rawDateTime->modify("{$numberOfDaysFormatted} day");
-            $this->extract();
-        }
-        return $this;
+        return $callbackResult ? $this->synchronized(($numberOfDays < 0 ? "-" : "+") . "{$numberOfDays} day") : $this;
     }
 
     /**
@@ -220,14 +213,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) {
             RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         }
-        if ($callbackResult) {
-            $numberOfMonthsFormatted = "+{$numberOfMonths}";
-            // If number of months argument less than zero, we know that (+) sign are not working anymore
-            if ($numberOfMonths < 0) $numberOfMonthsFormatted = "-{$numberOfMonths}";
-            $this->rawDateTime = $this->rawDateTime->modify("{$numberOfMonthsFormatted} month");
-            $this->extract();
-        }
-        return $this;
+        return $callbackResult ? $this->synchronized(($numberOfMonths < 0 ? "-" : "+") . "{$numberOfMonths} month") : $this;
     }
 
     /**
@@ -283,13 +269,6 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) {
             RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         }
-        if ($callbackResult) {
-            $numberOfYearsFormatted = "+{$numberOfYears}";
-            // If number of months argument less than zero, we know that (+) sign are not working anymore
-            if ($numberOfYears < 0) $numberOfYearsFormatted = "-{$numberOfYears}";
-            $this->rawDateTime = $this->rawDateTime->modify("{$numberOfYearsFormatted} year");
-            $this->extract();
-        }
-        return $this;
+        return $callbackResult ? $this->synchronized(($numberOfYears < 0 ? "-" : "+") . "{$numberOfYears} year") : $this;
     }
 }
