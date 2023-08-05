@@ -48,6 +48,10 @@ We also have method that can help you to add or substract `days`, `month`, `year
 | `addMonths(int $numberOfMonths)` | Add **N** months from your specific **DateTime** |
 | `addMonthIf(callable $prediction)` | Add one month from your specific **DateTime** with certain condition |
 | `addMonthsIf(callable $prediction, int $numberOfMonths)` | Add **N** months from your specific **DateTime** with certain condition |
+| `addYear()`   | Add one year from your specific **DateTime** | 
+| `addYears(int $numberOfYears)` | Add **N** years from your specific **DateTime** |
+| `addYearIf(callable $prediction)` | Add one year from your specific **DateTime** with certain condition |
+| `addYearsIf(callable $prediction, int $numberOfYears)` | Add **N** years from your specific **DateTime** with certain condition |
 
 This is a few example how to use all the listed method above: 
 
@@ -73,6 +77,7 @@ try {
     $rutinNull = Rutin::now()->addDays("")->format("Y-m-d");
 } catch (\Damenjo\Rutin\Exceptions\RutinException $e) {
     // We recommend you too use this catch blocks too
+    echo $e->ruinMessage();
 } catch (\TypeError $e) {
     // Do whatever you want inside this block
 }
