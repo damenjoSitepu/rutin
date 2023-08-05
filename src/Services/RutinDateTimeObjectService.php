@@ -231,4 +231,74 @@ final class RutinDateTimeObjectService {
         }
         return $this;
     }
+
+    /**
+     * Add One Year
+     *
+     * @return RutinDateTimeObjectService
+     */
+    public function addYear(): RutinDateTimeObjectService
+    {
+        $this->rawDateTime = $this->rawDateTime->modify("+1 year");
+        $this->extract();
+        return $this;
+    }
+
+    /**
+     * Add Year With Condition
+     *
+     * @param callable $prediction
+     * @return RutinDateTimeObjectService
+     */
+    public function addYearIf(callable $prediction): RutinDateTimeObjectService
+    {
+        $callbackResult = $prediction();
+        if (! is_bool($callbackResult)) {
+            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
+        }
+        if ($callbackResult) {
+            $this->rawDateTime = $this->rawDateTime->modify("+1 year");
+            $this->extract();
+        }
+        return $this;
+    }
+
+    /**
+     * Add N Years
+     *
+     * @param integer $numberOfYears
+     * @return RutinDateTimeObjectService
+     */
+    public function addYears(int $numberOfYears = 1): RutinDateTimeObjectService
+    {           
+        $numberOfYearsFormatted = "+{$numberOfYears}";
+        // If number of months argument less than zero, we know that (+) sign are not working anymore
+        if ($numberOfYears < 0) $numberOfYearsFormatted = "-{$numberOfYears}";
+        $this->rawDateTime = $this->rawDateTime->modify("{$numberOfYearsFormatted} year");
+        $this->extract();
+        return $this;
+    }
+
+    /**
+     * Add N Years With Condition
+     * 
+     * @param callable $prediction
+     * @param integer $numberOfYears
+     * @return RutinDateTimeObjectService
+     */
+    public function addYearsIf(callable $prediction, int $numberOfYears = 1): RutinDateTimeObjectService
+    {
+        $callbackResult = $prediction();
+        if (! is_bool($callbackResult)) {
+            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
+        }
+        if ($callbackResult) {
+            $numberOfYearsFormatted = "+{$numberOfYears}";
+            // If number of months argument less than zero, we know that (+) sign are not working anymore
+            if ($numberOfYears < 0) $numberOfYearsFormatted = "-{$numberOfYears}";
+            $this->rawDateTime = $this->rawDateTime->modify("{$numberOfYearsFormatted} year");
+            $this->extract();
+        }
+        return $this;
+    }
 }
