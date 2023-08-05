@@ -298,7 +298,7 @@ final class RutinDateTimeObjectService {
      * @param integer $numberOfTimestamp
      * @return RutinDateTimeObjectService
      */
-    public function addTimestampIf(callable $prediction, int $numberOfTimestamp = 1): RutinDateTimeObjectService
+    public function addTimestampIf(callable $prediction, int $numberOfTimestamp = 0): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
         ! is_bool($callbackResult) && RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
