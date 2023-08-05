@@ -122,6 +122,21 @@ final class RutinDateTimeObjectService {
     }
 
     /**
+     * Synchronized the datetime data after they've been modified using timestamp 
+     *
+     * @param integer $timestamp
+     * @return RutinDateTimeObjectService
+     */
+    private function synchronizedWithTimestamp(int $timestamp = 0): RutinDateTimeObjectService
+    {
+        if ($this->isWhileCalled && ! $this->isWhileConditionPassed) return $this; 
+        $this->rawDateTime = $this->rawDateTime->setTimestamp($this->rawDateTime->getTimestamp() + $timestamp);
+        $this->extract();
+        $this->isWhileCalled = false;
+        return $this;
+    }
+
+    /**
      * Add One Day
      *
      * @return RutinDateTimeObjectService
@@ -263,6 +278,31 @@ final class RutinDateTimeObjectService {
         $callbackResult = $prediction();
         ! is_bool($callbackResult) && RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         return $callbackResult ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfYears,"year")) : $this;
+    }
+
+    /**
+     * Add Timestamp
+     *
+     * @param int $numberOfTimestamp
+     * @return RutinDateTimeObjectService
+     */
+    public function addTimestamp(int $numberOfTimestamp = 0): RutinDateTimeObjectService
+    {
+        return $this->synchronizedWithTimestamp($numberOfTimestamp);
+    }
+
+    /**
+     * Add N Timestamp With Condition
+     * 
+     * @param callable $prediction
+     * @param integer $numberOfTimestamp
+     * @return RutinDateTimeObjectService
+     */
+    public function addTimestampIf(callable $prediction, int $numberOfTimestamp = 1): RutinDateTimeObjectService
+    {
+        $callbackResult = $prediction();
+        ! is_bool($callbackResult) && RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
+        return $callbackResult ? $this->synchronizedWithTimestamp($numberOfTimestamp) : $this;
     }
 
     /**
