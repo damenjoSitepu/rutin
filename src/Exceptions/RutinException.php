@@ -5,7 +5,9 @@ use Exception;
 
 class RutinException extends Exception {
     /**
-     * If error happens, display this custom message
+     * If error happened, display this message (this message 
+     * exceptions only available if developer use our 
+     * RutinException to trigger the error )
      *
      * @return string
      */
