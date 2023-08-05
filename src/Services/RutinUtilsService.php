@@ -9,7 +9,7 @@ class RutinUtilsService {
      * @param string $dateElement
      * @return string
      */
-    public static function modifyDateTimeWithMinusOrPlusSign(int $numberOfDateElement = 0, string $dateElement): string 
+    public static function modifyDateTimeWithMinusOrPlusSign(int $numberOfDateElement = 0, string $dateElement = "day"): string 
     {
         return ($numberOfDateElement < 0 ? "-" : "+") . "{$numberOfDateElement} {$dateElement}";
     }    
