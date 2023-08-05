@@ -53,9 +53,14 @@ We also have method that can help you to add or substract `days`, `month`, `year
 | `addYearIf(callable $prediction)` | Add one year from your specific **DateTime** with certain condition |
 | `addYearsIf(callable $prediction, int $numberOfYears)` | Add **N** years from your specific **DateTime** with certain condition |
 
+> [!NOTE]
+> We also now have `add(string $dateElement, int $numberOfDateElement = 1)` to make your life easier. We'll describe the example below the existing code, so please take your time to see it ^_^
+
 This is a few example how to use all the listed method above: 
 
 ```php
+$rutin = Rutin::now()->add("day",1)->format("Y-m-d");
+
 // 2023-08-03
 $rutinNow = Rutin::now()->format("Y-m-d");
 
@@ -89,6 +94,16 @@ Also, if you have scenario like to add your day by some conditions, you can use 
 $prediction = true;
 $rutinPlusOneDayIf = Rutin::now()->addDayIf(fn() => $prediction)->format("Y-m-d");
 ```
+
+Certainly, there is a scenario that make you need to use condition within the `add()` method. That is now possible to do with our brand new `while()` . 
+
+```php
+$prediction = true;
+Rutin::now()->while(fn() => $prediction)->addDay()->format("Y-m-d");
+```
+
+> [!WARNING]
+> `while()` only will affect to addition or substraction datetime functionality, not another things like `format()`
 
 ---
 
