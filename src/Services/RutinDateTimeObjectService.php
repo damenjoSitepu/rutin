@@ -109,6 +109,7 @@ final class RutinDateTimeObjectService {
     /**
      * Synchronized the datetime data after they've been modified
      *
+     * @param string $modifiedDateElements
      * @return RutinDateTimeObjectService
      */
     private function synchronized(string $modifiedDateElements): RutinDateTimeObjectService
@@ -128,7 +129,7 @@ final class RutinDateTimeObjectService {
     {
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $this->synchronized("+1 day");
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"day"));
     }
 
     /**
@@ -143,7 +144,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $callbackResult ? $this->synchronized("+1 day") : $this;
+        return $callbackResult ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"day")) : $this;
     }
 
     /**
@@ -156,7 +157,7 @@ final class RutinDateTimeObjectService {
     {           
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $this->synchronized(($numberOfDays < 0 ? "-" : "+") . "{$numberOfDays} day");
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfDays,"day"));
     }
 
     /**
@@ -172,7 +173,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $callbackResult ? $this->synchronized(($numberOfDays < 0 ? "-" : "+") . "{$numberOfDays} day") : $this;
+        return $callbackResult ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfDays,"day")) : $this;
     }
 
     /**
@@ -184,7 +185,7 @@ final class RutinDateTimeObjectService {
     {
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $this->synchronized("+1 month");
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"month"));
     }
 
     /**
@@ -199,7 +200,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);       
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this; 
-        return $callbackResult ? $this->synchronized("+1 month") : $this;
+        return $callbackResult ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"month")) : $this;
     }
 
     /**
@@ -212,7 +213,7 @@ final class RutinDateTimeObjectService {
     {           
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $this->synchronized(($numberOfMonths < 0 ? "-" : "+") . "{$numberOfMonths} month");
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfMonths,"month"));
     }
 
     /**
@@ -228,7 +229,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $callbackResult ? $this->synchronized(($numberOfMonths < 0 ? "-" : "+") . "{$numberOfMonths} month") : $this;
+        return $callbackResult ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfMonths,"month")) : $this;
     }
 
     /**
@@ -240,7 +241,7 @@ final class RutinDateTimeObjectService {
     {
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $this->synchronized("+1 year");
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"year"));
     }
 
     /**
@@ -255,7 +256,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $callbackResult ? $this->synchronized("+1 year") : $this;
+        return $callbackResult ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"year")) : $this;
     }
 
     /**
@@ -268,7 +269,7 @@ final class RutinDateTimeObjectService {
     {           
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $this->synchronized(($numberOfYears < 0 ? "-" : "+") . "{$numberOfYears} year");
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfYears,"year"));
     }
 
     /**
@@ -284,7 +285,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $callbackResult ? $this->synchronized(($numberOfYears < 0 ? "-" : "+") . "{$numberOfYears} year") : $this;
+        return $callbackResult ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfYears,"year")) : $this;
     }
 
     /**
@@ -299,7 +300,7 @@ final class RutinDateTimeObjectService {
         ! in_array($dateElement, ["day","month","year"]) ? RE::throw(RME::INVALID_DATE_ELEMENT) : "";
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
-        return $this->synchronized(($numberOfDateElement < 0 ? "-" : "+") . "{$numberOfDateElement} {$dateElement}");
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfDateElement,$dateElement));
     }
 
     /**
