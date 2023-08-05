@@ -141,12 +141,7 @@ final class RutinDateTimeObjectService {
      */
     public function addDays(int $numberOfDays = 1): RutinDateTimeObjectService
     {           
-        $numberOfDaysFormatted = "+{$numberOfDays}";
-        // If number of days argument less than zero, we know that (+) sign are not working anymore
-        if ($numberOfDays < 0) $numberOfDaysFormatted = "-{$numberOfDays}";
-        $this->rawDateTime = $this->rawDateTime->modify("{$numberOfDaysFormatted} day");
-        $this->extract();
-        return $this;
+        return $this->synchronized(($numberOfDays < 0 ? "-" : "+") . "{$numberOfDays} day");
     }
 
     /**
@@ -209,12 +204,7 @@ final class RutinDateTimeObjectService {
      */
     public function addMonths(int $numberOfMonths = 1): RutinDateTimeObjectService
     {           
-        $numberOfMonthsFormatted = "+{$numberOfMonths}";
-        // If number of months argument less than zero, we know that (+) sign are not working anymore
-        if ($numberOfMonths < 0) $numberOfMonthsFormatted = "-{$numberOfMonths}";
-        $this->rawDateTime = $this->rawDateTime->modify("{$numberOfMonthsFormatted} month");
-        $this->extract();
-        return $this;
+        return $this->synchronized(($numberOfMonths < 0 ? "-" : "+") . "{$numberOfMonths} month");
     }
 
     /**
@@ -277,12 +267,7 @@ final class RutinDateTimeObjectService {
      */
     public function addYears(int $numberOfYears = 1): RutinDateTimeObjectService
     {           
-        $numberOfYearsFormatted = "+{$numberOfYears}";
-        // If number of months argument less than zero, we know that (+) sign are not working anymore
-        if ($numberOfYears < 0) $numberOfYearsFormatted = "-{$numberOfYears}";
-        $this->rawDateTime = $this->rawDateTime->modify("{$numberOfYearsFormatted} year");
-        $this->extract();
-        return $this;
+        return $this->synchronized(($numberOfYears < 0 ? "-" : "+") . "{$numberOfYears} year");
     }
 
     /**
