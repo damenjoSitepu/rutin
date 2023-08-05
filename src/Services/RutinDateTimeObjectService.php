@@ -297,7 +297,7 @@ final class RutinDateTimeObjectService {
      */
     public function add(string $dateElement, int $numberOfDateElement = 1): RutinDateTimeObjectService
     {
-        ! in_array($dateElement, ["day","month","year"]) ? RE::throw(RME::INVALID_DATE_ELEMENT) : "";
+        ! in_array($dateElement, ["day","month","year"]) && RE::throw(RME::INVALID_DATE_ELEMENT);
         if ($this->isWhileCalled) 
             if (! $this->isConditionPassed) return $this;
         return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfDateElement,$dateElement));
