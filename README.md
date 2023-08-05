@@ -99,7 +99,7 @@ Certainly, there is a scenario that make you need to use condition within the `a
 
 ```php
 $prediction = true;
-Rutin::now()->while(fn() => $prediction)->addDay()->format("Y-m-d");
+Rutin::now()->while(fn() => $prediction)->add("month",3)->format("Y-m-d");
 ```
 
 > [!WARNING]
