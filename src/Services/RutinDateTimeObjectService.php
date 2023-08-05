@@ -126,11 +126,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) {
             RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         }
-        if ($callbackResult) {
-            $this->rawDateTime = $this->rawDateTime->modify("+1 day");
-            $this->extract();
-        }
-        return $this;
+        return $callbackResult ? $this->synchronized("+1 day") : $this;
     }
 
     /**
@@ -182,11 +178,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) {
             RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         }
-        if ($callbackResult) {
-            $this->rawDateTime = $this->rawDateTime->modify("+1 month");
-            $this->extract();
-        }
-        return $this;
+        return $callbackResult ? $this->synchronized("+1 month") : $this;
     }
 
     /**
@@ -238,11 +230,7 @@ final class RutinDateTimeObjectService {
         if (! is_bool($callbackResult)) {
             RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         }
-        if ($callbackResult) {
-            $this->rawDateTime = $this->rawDateTime->modify("+1 year");
-            $this->extract();
-        }
-        return $this;
+        return $callbackResult ? $this->synchronized("+1 year") : $this;
     }
 
     /**
