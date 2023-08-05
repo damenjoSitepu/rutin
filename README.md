@@ -59,6 +59,7 @@ We also have method that can help you to add or substract `days`, `month`, `year
 This is a few example how to use all the listed method above: 
 
 ```php
+// 2023-08-04
 $rutin = Rutin::now()->add("day",1)->format("Y-m-d");
 
 // 2023-08-03
