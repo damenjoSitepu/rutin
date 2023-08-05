@@ -129,7 +129,7 @@ final class RutinDateTimeObjectService {
      * @param integer $numberOfDays
      * @return RutinDateTimeObjectService
      */
-    public function addDays(int $numberOfDays = 0): RutinDateTimeObjectService
+    public function addDays(int $numberOfDays = 1): RutinDateTimeObjectService
     {           
         $numberOfDaysFormatted = "+{$numberOfDays}";
         // If number of days argument less than zero, we know that (+) sign are not working anymore
@@ -146,7 +146,7 @@ final class RutinDateTimeObjectService {
      * @param integer $numberOfDays
      * @return RutinDateTimeObjectService
      */
-    public function addDaysIf(callable $prediction, int $numberOfDays = 0): RutinDateTimeObjectService
+    public function addDaysIf(callable $prediction, int $numberOfDays = 1): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
         if (! is_bool($callbackResult)) {
@@ -157,6 +157,76 @@ final class RutinDateTimeObjectService {
             // If number of days argument less than zero, we know that (+) sign are not working anymore
             if ($numberOfDays < 0) $numberOfDaysFormatted = "-{$numberOfDays}";
             $this->rawDateTime = $this->rawDateTime->modify("{$numberOfDaysFormatted} day");
+            $this->extract();
+        }
+        return $this;
+    }
+
+    /**
+     * Add One Month
+     *
+     * @return RutinDateTimeObjectService
+     */
+    public function addMonth(): RutinDateTimeObjectService
+    {
+        $this->rawDateTime = $this->rawDateTime->modify("+1 month");
+        $this->extract();
+        return $this;
+    }
+
+    /**
+     * Add Month With Condition
+     *
+     * @param callable $prediction
+     * @return RutinDateTimeObjectService
+     */
+    public function addMonthIf(callable $prediction): RutinDateTimeObjectService
+    {
+        $callbackResult = $prediction();
+        if (! is_bool($callbackResult)) {
+            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
+        }
+        if ($callbackResult) {
+            $this->rawDateTime = $this->rawDateTime->modify("+1 month");
+            $this->extract();
+        }
+        return $this;
+    }
+
+    /**
+     * Add N Months
+     *
+     * @param integer $numberOfMonths
+     * @return RutinDateTimeObjectService
+     */
+    public function addMonths(int $numberOfMonths = 1): RutinDateTimeObjectService
+    {           
+        $numberOfMonthsFormatted = "+{$numberOfMonths}";
+        // If number of months argument less than zero, we know that (+) sign are not working anymore
+        if ($numberOfMonths < 0) $numberOfMonthsFormatted = "-{$numberOfMonths}";
+        $this->rawDateTime = $this->rawDateTime->modify("{$numberOfMonthsFormatted} month");
+        $this->extract();
+        return $this;
+    }
+
+    /**
+     * Add N Months With Condition
+     * 
+     * @param callable $prediction
+     * @param integer $numberOfMonths
+     * @return RutinDateTimeObjectService
+     */
+    public function addMonthsIf(callable $prediction, int $numberOfMonths = 1): RutinDateTimeObjectService
+    {
+        $callbackResult = $prediction();
+        if (! is_bool($callbackResult)) {
+            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
+        }
+        if ($callbackResult) {
+            $numberOfMonthsFormatted = "+{$numberOfMonths}";
+            // If number of months argument less than zero, we know that (+) sign are not working anymore
+            if ($numberOfMonths < 0) $numberOfMonthsFormatted = "-{$numberOfMonths}";
+            $this->rawDateTime = $this->rawDateTime->modify("{$numberOfMonthsFormatted} month");
             $this->extract();
         }
         return $this;
