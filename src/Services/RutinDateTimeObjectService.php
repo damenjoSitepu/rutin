@@ -1,7 +1,8 @@
 <?php 
 namespace Damenjo\Rutin\Services;
 
-use Damenjo\Rutin\Exceptions\RutinException;
+use Damenjo\Rutin\Exceptions\RE;
+use Damenjo\Rutin\Exceptions\RME;
 use Damenjo\Rutin\Validations\RutinValidation;
 use DateTime;
 
@@ -86,7 +87,7 @@ final class RutinDateTimeObjectService {
     public function format(string $format = self::DEFAULT_FORMAT): string
     {
         if (RutinValidation::isEmpty($format)) {
-            throw new RutinException("Format argument cannot be empty!");
+            RE::throw(RME::FORMAT_EMPTY);
         }
         return $this->rawDateTime->format($format);
     }
@@ -113,7 +114,7 @@ final class RutinDateTimeObjectService {
     {
         $callbackResult = $prediction();
         if (! is_bool($callbackResult)) {
-            throw new RutinException("The callback prediction must return a boolean value!");
+            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         }
         if ($callbackResult) {
             $this->rawDateTime = $this->rawDateTime->modify("+1 day");
@@ -149,7 +150,7 @@ final class RutinDateTimeObjectService {
     {
         $callbackResult = $prediction();
         if (! is_bool($callbackResult)) {
-            throw new RutinException("The callback prediction must return a boolean value!");
+            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         }
         if ($callbackResult) {
             $numberOfDaysFormatted = "+{$numberOfDays}";

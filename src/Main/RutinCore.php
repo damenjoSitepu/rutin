@@ -4,12 +4,12 @@ declare(strict_types=1);
 namespace Damenjo\Rutin\Main;
 
 use Damenjo\Rutin\Contracts\Core;
-use Damenjo\Rutin\Exceptions\RutinException;
+use Damenjo\Rutin\Exceptions\RE;
+use Damenjo\Rutin\Exceptions\RME;
 use Damenjo\Rutin\Services\ConvertToDateTimeService;
 use Damenjo\Rutin\Services\RutinDateTimeObjectService;
 use Damenjo\Rutin\Validations\RutinValidation;
 use DateTime;
-use DateTimeZone;
 
 abstract class RutinCore implements Core {
     /**
@@ -46,7 +46,7 @@ abstract class RutinCore implements Core {
     public static function now(string $tZ = self::DEFAULT_TIMEZONE): RutinDateTimeObjectService
     {    
         if (RutinValidation::isEmpty($tZ)) {
-            throw new RutinException("Timezone argument cannot be empty!");
+            RE::throw(RME::TIMEZONE_EMPTY);
         }
         self::$resultDateTime = (new ConvertToDateTimeService($tZ))->get();
         return new RutinDateTimeObjectService(self::$resultDateTime);
