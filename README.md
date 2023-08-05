@@ -44,7 +44,10 @@ We also have method that can help you to add or substract `days`, `month`, `year
 | `addDays(int $numberOfDays)` | Add **N** days from your specific **DateTime** |
 | `addDayIf(callable $prediction)` | Add one day from your specific **DateTime** with certain condition |
 | `addDaysIf(callable $prediction, int $numberOfDays)` | Add **N** days from your specific **DateTime** with certain condition |
-
+| `addMonth()`   | Add one month from your specific **DateTime** | 
+| `addMonths(int $numberOfMonths)` | Add **N** months from your specific **DateTime** |
+| `addMonthIf(callable $prediction)` | Add one month from your specific **DateTime** with certain condition |
+| `addMonthsIf(callable $prediction, int $numberOfMonths)` | Add **N** months from your specific **DateTime** with certain condition |
 
 This is a few example how to use all the listed method above: 
 
@@ -63,6 +66,18 @@ $rutinNull = Rutin::now()->addDays(null ?? 0)->format("Y-m-d");
 ```
 > [!WARNING]
 > `null` will cause an **error**, so please take a **note** that null safety `??` are **important** if you not sure that value will be taken as `number`
+> `null` or any type unless `number` will cause an error, so please take a **note** that `try` and `catch` blocks are  important to handle the error of your code. For some quick step, lets see this code:
+
+```php
+try {
+    // Invalid argument data type
+    $rutinNull = Rutin::now()->addDays("")->format("Y-m-d");
+} catch (\Damenjo\Rutin\Exceptions\RutinException $e) {
+    // We recommend you too use this catch blocks too
+} catch (\TypeError $e) {
+    // Do whatever you want inside this block
+}
+```
 
 Also, if you have scenario like to add your day by some conditions, you can use `addDayIf()` . 
 
