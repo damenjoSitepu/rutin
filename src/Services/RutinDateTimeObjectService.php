@@ -123,9 +123,7 @@ final class RutinDateTimeObjectService {
     public function addDayIf(callable $prediction): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
-        if (! is_bool($callbackResult)) {
-            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
-        }
+        if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         return $callbackResult ? $this->synchronized("+1 day") : $this;
     }
 
@@ -150,9 +148,7 @@ final class RutinDateTimeObjectService {
     public function addDaysIf(callable $prediction, int $numberOfDays = 1): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
-        if (! is_bool($callbackResult)) {
-            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
-        }
+        if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         return $callbackResult ? $this->synchronized(($numberOfDays < 0 ? "-" : "+") . "{$numberOfDays} day") : $this;
     }
 
@@ -175,9 +171,7 @@ final class RutinDateTimeObjectService {
     public function addMonthIf(callable $prediction): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
-        if (! is_bool($callbackResult)) {
-            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
-        }
+        if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);        
         return $callbackResult ? $this->synchronized("+1 month") : $this;
     }
 
@@ -202,9 +196,7 @@ final class RutinDateTimeObjectService {
     public function addMonthsIf(callable $prediction, int $numberOfMonths = 1): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
-        if (! is_bool($callbackResult)) {
-            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
-        }
+        if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         return $callbackResult ? $this->synchronized(($numberOfMonths < 0 ? "-" : "+") . "{$numberOfMonths} month") : $this;
     }
 
@@ -227,9 +219,7 @@ final class RutinDateTimeObjectService {
     public function addYearIf(callable $prediction): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
-        if (! is_bool($callbackResult)) {
-            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
-        }
+        if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         return $callbackResult ? $this->synchronized("+1 year") : $this;
     }
 
@@ -254,9 +244,7 @@ final class RutinDateTimeObjectService {
     public function addYearsIf(callable $prediction, int $numberOfYears = 1): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
-        if (! is_bool($callbackResult)) {
-            RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
-        }
+        if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         return $callbackResult ? $this->synchronized(($numberOfYears < 0 ? "-" : "+") . "{$numberOfYears} year") : $this;
     }
 }
