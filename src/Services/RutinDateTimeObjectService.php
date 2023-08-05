@@ -314,7 +314,7 @@ final class RutinDateTimeObjectService {
     public function while(callable $prediction): RutinDateTimeObjectService
     {
         $callbackResult = $prediction();
-        if (! is_bool($callbackResult)) RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
+        ! is_bool($callbackResult) && RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED);
         $this->isWhileCalled = true;
         $callbackResult ? $this->isConditionPassed = true : $this->isConditionPassed = false;
         return $this;
