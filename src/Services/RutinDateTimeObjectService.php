@@ -306,7 +306,7 @@ final class RutinDateTimeObjectService {
     /**
      * Add One or N for the specified date element
      *
-     * @param string $dateElement
+     * @param string $dateElement | Possible Value: "day","month","year","timestamp","ts"
      * @param int $numberOfDateElement
      * @return RutinDateTimeObjectService
      */
