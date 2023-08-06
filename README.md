@@ -108,7 +108,7 @@ Rutin::now()->while(fn() => $prediction)->add("month",3)->format("Y-m-d");
 Since this method was calling in front of addition or substraction method like `addDay()` or `addMonths()` , `etc` , this awesome `while()` method will determine that addition or substraction functionality will be affected to the current **DateTime** or not.
 
 > [!WARNING]
-> `while()` only will affect to addition or substraction datetime functionality, not another things like `format()`
+> `while()` only will affect to addition or substraction datetime method, not another things like `format()`
 
 ---
 
