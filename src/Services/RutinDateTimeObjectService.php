@@ -289,6 +289,161 @@ final class RutinDateTimeObjectService {
         return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronizedWithTimestamp($numberOfTimestamp) : $this;
     }
 
+     /**
+     * Skip One Day
+     *
+     * @return RutinDateTimeObjectService
+     */
+    public function skipDay(): RutinDateTimeObjectService
+    {
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"day"));
+    }
+
+    /**
+     * Skip Day With Condition
+     *
+     * @param callable $prediction
+     * @return RutinDateTimeObjectService
+     */
+    public function skipDayIf(callable $prediction): RutinDateTimeObjectService
+    {
+        return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"day")) : $this;
+    }
+
+    /**
+     * Skip N Days
+     *
+     * @param integer $numberOfDays
+     * @return RutinDateTimeObjectService
+     */
+    public function skipDays(int $numberOfDays = 1): RutinDateTimeObjectService
+    {           
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfDays,"day"));
+    }
+
+    /**
+     * Skip N Days With Condition
+     * 
+     * @param callable $prediction
+     * @param integer $numberOfDays
+     * @return RutinDateTimeObjectService
+     */
+    public function skipDaysIf(callable $prediction, int $numberOfDays = 1): RutinDateTimeObjectService
+    {
+        return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfDays,"day")) : $this;
+    }
+
+    /**
+     * Skip One Month
+     *
+     * @return RutinDateTimeObjectService
+     */
+    public function skipMonth(): RutinDateTimeObjectService
+    {
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"month"));
+    }
+
+    /**
+     * Skip Month With Condition
+     *
+     * @param callable $prediction
+     * @return RutinDateTimeObjectService
+     */
+    public function skipMonthIf(callable $prediction): RutinDateTimeObjectService
+    {       
+        return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"month")) : $this;
+    }
+
+    /**
+     * Skip N Months
+     *
+     * @param integer $numberOfMonths
+     * @return RutinDateTimeObjectService
+     */
+    public function skipMonths(int $numberOfMonths = 1): RutinDateTimeObjectService
+    {           
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfMonths,"month"));
+    }
+
+    /**
+     * Skip N Months With Condition
+     * 
+     * @param callable $prediction
+     * @param integer $numberOfMonths
+     * @return RutinDateTimeObjectService
+     */
+    public function skipMonthsIf(callable $prediction, int $numberOfMonths = 1): RutinDateTimeObjectService
+    {
+        return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfMonths,"month")) : $this;
+    }
+
+    /**
+     * Skip One Year
+     *
+     * @return RutinDateTimeObjectService
+     */
+    public function skipYear(): RutinDateTimeObjectService
+    {
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"year"));
+    }
+
+    /**
+     * Skip Year With Condition
+     *
+     * @param callable $prediction
+     * @return RutinDateTimeObjectService
+     */
+    public function skipYearIf(callable $prediction): RutinDateTimeObjectService
+    {
+        return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(1,"year")) : $this;
+    }
+
+    /**
+     * Skip N Years
+     *
+     * @param integer $numberOfYears
+     * @return RutinDateTimeObjectService
+     */
+    public function skipYears(int $numberOfYears = 1): RutinDateTimeObjectService
+    {           
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfYears,"year"));
+    }
+
+    /**
+     * Skip N Years With Condition
+     * 
+     * @param callable $prediction
+     * @param integer $numberOfYears
+     * @return RutinDateTimeObjectService
+     */
+    public function skipYearsIf(callable $prediction, int $numberOfYears = 1): RutinDateTimeObjectService
+    {
+        return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfYears,"year")) : $this;
+    }
+
+    /**
+     * Skip Timestamp
+     *
+     * @param int $numberOfTimestamp
+     * @return RutinDateTimeObjectService
+     */
+    public function skipTimestamp(int $numberOfTimestamp = 0): RutinDateTimeObjectService
+    {
+        return $this->synchronizedWithTimestamp($numberOfTimestamp);
+    }
+
+    /**
+     * Skip N Timestamp With Condition
+     * 
+     * @param callable $prediction
+     * @param integer $numberOfTimestamp
+     * @return RutinDateTimeObjectService
+     */
+    public function skipTimestampIf(callable $prediction, int $numberOfTimestamp = 0): RutinDateTimeObjectService
+    {
+        return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronizedWithTimestamp($numberOfTimestamp) : $this;
+    }
+
     /**
      * Add One or N for the specified date element
      *
