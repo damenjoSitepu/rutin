@@ -459,6 +459,20 @@ final class RutinDateTimeObjectService {
     }
 
     /**
+     * Skip One or N for the specified date element
+     *
+     * @param string $dateElement | Possible Value: "day","month","year","timestamp","ts"
+     * @param int $numberOfDateElement
+     * @return RutinDateTimeObjectService
+     */
+    public function skip(string $dateElement, int $numberOfDateElement = 1): RutinDateTimeObjectService
+    {
+        ! in_array($dateElement, ["day","month","year","timestamp","ts"]) && RE::throw(RME::INVALID_DATE_ELEMENT);
+        if (in_array($dateElement,["timestamp","ts"])) return $this->synchronizedWithTimestamp($numberOfDateElement);
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign($numberOfDateElement,$dateElement));
+    }
+
+    /**
      * Define a condition that will trigger addition / 
      * substraction for the datetime to 
      * be executed or not
