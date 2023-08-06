@@ -56,7 +56,7 @@ We also have method that can help you to add or substract `days`, `month`, `year
 | `addTimestampIf(callable $prediction, int $numberOfTimestamp = 1)` | Add defined number of timestamp to your specific **DateTime** with certain condition |
 
 > [!NOTE]
-> We also now have `add(string $dateElement, int $numberOfDateElement = 1)` to make your life easier. We'll describe the example below the existing code, so please take your time to see it ^_^
+> We also now have `add(string $dateElement, int $numberOfDateElement = 1)` or `skip(string $dateElement, int $numberOfDateElement = 1)` to make your life easier. We'll describe the example below the existing code, so please take your time to see it ^_^
 
 This is a few example how to use all the listed method above: 
 
