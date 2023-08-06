@@ -100,9 +100,7 @@ final class RutinDateTimeObjectService {
      */
     public function format(string $format = self::DEFAULT_FORMAT): string
     {
-        if (RutinValidation::isEmpty($format)) {
-            RE::throw(RME::FORMAT_EMPTY);
-        }
+        RutinValidation::isEmpty($format) && RE::throw(RME::FORMAT_EMPTY);
         return $this->rawDateTime->format($format);
     }
 
