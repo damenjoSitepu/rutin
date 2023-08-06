@@ -145,6 +145,16 @@ final class RutinDateTimeObjectService {
     }
 
     /**
+     * Substract One Day
+     *
+     * @return RutinDateTimeObjectService
+     */
+    public function subDay(): RutinDateTimeObjectService
+    {
+        return $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(-1,"day"));
+    }
+
+    /**
      * Add Day With Condition
      *
      * @param callable $prediction
