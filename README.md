@@ -41,6 +41,7 @@ We also have method that can help you to add or substract `days`, `month`, `year
 | Method Name | Used For |
 | --------------- | --------------- |
 | `addDay()`   | Add one day to your specific **DateTime** | 
+| `subDay()`   | Substract one day to your specific **DateTime** | 
 | `addDays(int $numberOfDays)` | Add **N** days to your specific **DateTime** |
 | `addDayIf(callable $prediction)` | Add one day to your specific **DateTime** with certain condition |
 | `addDaysIf(callable $prediction, int $numberOfDays)` | Add **N** days to your specific **DateTime** with certain condition |
