@@ -166,6 +166,17 @@ final class RutinDateTimeObjectService {
     }
 
     /**
+     * Substract Day With Condition
+     *
+     * @param callable $prediction
+     * @return RutinDateTimeObjectService
+     */
+    public function subDayIf(callable $prediction): RutinDateTimeObjectService
+    {
+        return RutinValidation::errorIfCallbackNotBooleanVal($prediction) ? $this->synchronized(RutinUtilsService::modifyDateTimeWithMinusOrPlusSign(-1,"day")) : $this;
+    }
+
+    /**
      * Add N Days
      *
      * @param integer $numberOfDays
