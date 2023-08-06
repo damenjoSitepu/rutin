@@ -9,9 +9,9 @@ class RutinValidation {
      * Error will be throwed if prediction not returning boolean values
      *
      * @param callable $callbackResult
-     * @return callable
+     * @return bool
      */
-    public static function errorIfCallbackNotBooleanVal(callable $callbackResult): callable
+    public static function errorIfCallbackNotBooleanVal(callable $callbackResult): bool
     {
         return ! is_bool($callbackResult()) ? RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED) : $callbackResult();
     }
