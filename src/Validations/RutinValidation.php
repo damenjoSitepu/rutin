@@ -1,7 +1,21 @@
 <?php 
 namespace Damenjo\Rutin\Validations;
 
+use Damenjo\Rutin\Exceptions\RE;
+use Damenjo\Rutin\Exceptions\RME;
+
 class RutinValidation {
+    /**
+     * Error will be throwed if prediction not returning boolean values
+     *
+     * @param callable $callbackResult
+     * @return callable
+     */
+    public static function errorIfCallbackNotBooleanVal(callable $callbackResult): callable
+    {
+        return ! is_bool($callbackResult()) ? RE::throw(RME::PREDICTION_MUST_BE_BOOLEAN_RETURNED) : $callbackResult();
+    }
+
     /**
      * Check whether variable are empty or not
      * 
